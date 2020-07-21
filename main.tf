@@ -58,6 +58,10 @@ resource "vsphere_virtual_machine" "DruvaProxy_ova" {
   }
     vapp {
     properties = {
+
+//properties missing
+
+
     }
   }
 }
