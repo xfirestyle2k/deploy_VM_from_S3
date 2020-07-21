@@ -10,6 +10,7 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
+//get data from vCenter
 data "vsphere_datacenter" "dc" {
   name = "SDDC-Datacenter"
 }
@@ -34,13 +35,14 @@ data "vsphere_network" "network" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-
-
+//Test if the connect to cCenter working:
 resource "vsphere_folder" "folder" {
   path          = "Druva-test-folder"
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
+
+//deploying VM:
 
 resource "vsphere_virtual_machine" "DruvaProxy_ova" {
   name                       = "DruvaProxy"
